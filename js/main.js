@@ -86,7 +86,6 @@ if (clientsSwiper) {
       },
    });
 }
-
 const animItems = document.querySelectorAll('._anim-items');
 if (animItems.length > 0) {
    window.addEventListener('scroll', animOnScroll);
@@ -122,7 +121,6 @@ if (animItems.length > 0) {
       animOnScroll();
    }, 300);
 }
-
 // МЕНЮ БУРГЕР
 let menu = document.querySelector('.icon-menu');
 let menuBody = document.querySelector('.menu__body');
@@ -141,11 +139,13 @@ menu.addEventListener('click', function () {
  * @property {string} order
  * @property {number} index
  */
+
 /**
  * @typedef {Object} dMediaQuery
  * @property {string} query
  * @property {number} breakpoint
  */
+
 /**
  * @param {'min' | 'max'} type
  */
@@ -312,8 +312,8 @@ function useDynamicAdapt(type = 'max') {
       return !isNaN(value)
    }
 }
-useDynamicAdapt();
 
+useDynamicAdapt();
 // ЛИПКИЙ HEADER
 let header = document.querySelector('.header');
 let mainBlock = document.querySelector('.main').clientHeight;
@@ -565,7 +565,6 @@ let _slideToggle = (target, duration = 500) => {
       return _slideUp(target, duration);
    }
 }
-
 // POPUP
 const popupLinks = document.querySelectorAll('[data-popup]');
 const body = document.querySelector('body');
@@ -596,6 +595,7 @@ if (popupCloseIcon.length > 0) {
       });
    }
 }
+
 function popupOpen(curentPopup) {
    if (curentPopup && unlock) {
       const popupActive = document.querySelector('.popup._open');
@@ -620,6 +620,7 @@ function popupClose(popupActive, doUnlock = true) {
       }
    }
 }
+
 function bodyLock() {
    const lockPaddingValue = window.innerWidth - document.querySelector('.wrapper').offsetWidth + 'px';
 
@@ -639,6 +640,7 @@ function bodyLock() {
       unlock = true;
    }, timeout);
 }
+
 function bodyUnLock() {
    setTimeout(function () {
       if (lockPadding.length > 0) {
@@ -659,12 +661,14 @@ function bodyUnLock() {
       unlock = true;
    }, timeout);
 }
+
 document.addEventListener('keydown', function (e) {
    if (e.which === 27) {
       const popupActive = document.querySelector('.popup._open');
       popupClose(popupActive);
    }
 });
+
 (function () {
    // проверяем поддержку
    if (!Element.prototype.closest) {
@@ -689,7 +693,6 @@ document.addEventListener('keydown', function (e) {
          Element.prototype.msMatchesSelector;
    }
 })();
-
 // ВАЛИДАЦИЯ ФОРМЫ
 let forms = document.querySelectorAll('form');
 if (forms.length > 0) { 
@@ -814,7 +817,6 @@ function intitForms(forms) {
       }
    }
 }
-
 // ЯКОРЬ (ПЛАВНАЯ ПРОКРУТКА ДО НУЖНОГО БЛОКА) С ПОДСВЕТКОЙ АКТИВНОГО ПУНКТА МЕНЮ
 let menuLinks = document.querySelectorAll('[data-goto]');
 if (menuLinks.length > 0) {
@@ -850,7 +852,7 @@ if (menuLinks.length > 0) {
       for (let menuLink of menuLinks) { 
          if (menuLink.dataset.goto && document.querySelector(menuLink.dataset.goto)) { 
             menuLinkVars(menuLink);
-            if (gotoBlock.offsetTop - document.querySelector('header').offsetHeight <= scrollDistance && gotoBlockHeight + gotoBlockValue > scrollDistance) {
+            if (gotoBlock.offsetTop - document.querySelector('header').offsetHeight <= scrollDistance + 1 && gotoBlockHeight + gotoBlockValue > scrollDistance) {
                   for (let menuLink of menuLinks) {
                      if (menuLink.classList.contains('_active')) {
                         menuLink.classList.remove('_active');
